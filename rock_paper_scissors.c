@@ -6,14 +6,16 @@
 int main(void)
 {
 	int moves[2];
-	pipe(moves);
 	int player2;
 	int player2_move;
 	int player1_move;
 	int result;
 
+	if( pipe(moves) == -1)
+		return (1);
 	player2 = fork();
-
+	if (player2 == -1)
+		return (1);
 	if (player2 == 0)
 		{
 			srand(time(0));
